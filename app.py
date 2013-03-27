@@ -17,12 +17,12 @@ app.config['BASIC_AUTH_PASSWORD'] = 'abc123'
 basic_auth = BasicAuth(app)
 
 @app.route('/')
-@basic_auth.required
+#@basic_auth.required
 def index():
     photos = app.config['db'].get_all()
     photos_num = len(photos)
-    left = [photos[index] for index in xrange(photos_num) if index % 2 == 1]
-    right = [photos[index] for index in xrange(photos_num) if index % 2 == 0]
+    right = [photos[index] for index in xrange(photos_num) if index % 2 == 1]
+    left = [photos[index] for index in xrange(photos_num) if index % 2 == 0]
     return render_template('index.html', left_photos = left, right_photos = right)
 
 @app.route('/upload', methods=['POST'])
