@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
+import os
 import time
 import random
 import Image
+
 
 def generate_name():
     now = str(time.time()).replace('.', '')
@@ -20,6 +22,11 @@ def generate_small_version(image_path):
     new_im.save(new_path) 
     return new_path
     
+
+def prepare_before_run():
+    if not os.path.exists('static/uploads/small_version'):
+        os.makedirs('static/uploads/small_version')
+
 
 if __name__ == '__main__':
     generate_small_version('gopher.png')

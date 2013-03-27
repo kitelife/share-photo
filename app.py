@@ -4,7 +4,7 @@ from flask import Flask
 from flask import request, redirect, url_for
 from flask import render_template
 from flask.ext.basicauth import BasicAuth
-from utils import generate_name, generate_small_version
+from utils import *
 from db import Redis
 import json
 
@@ -38,4 +38,5 @@ def upload():
 
 
 if __name__ == '__main__':
+    prepare_before_run()
     app.run(debug=True)
