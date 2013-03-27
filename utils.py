@@ -2,7 +2,6 @@
 
 import time
 import random
-import os
 import Image
 
 def generate_name():
