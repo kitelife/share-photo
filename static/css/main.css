@@ -3,10 +3,6 @@ h1 {
     text-align: center;
 }
 
-#show_photos {
-    height: 100px;
-}
-
 img {
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -21,12 +17,12 @@ img {
 #jquery-wrapped-fine-uploader {
     margin-left: 80%;
     margin-bottom: 10px;
-    width: 300px;
+    width: 270px;
 }
 
 #container {
     height: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 #left-part {
