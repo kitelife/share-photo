@@ -1,0 +1,31 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>毕业之时 - 照片分享</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fineuploader.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.fineuploader.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+    </head>
+    <body>
+    <div id="title">
+        <h1>
+            毕业光影
+        </h1>
+    </div>
+    <div id="container">
+    <div id="jquery-wrapped-fine-uploader"></div>
+    <div id="show_photos">
+        {% for photo in photos %}
+            <div class="photo">
+                <a target="_blank" href="/{{ photo.origin }}">
+                    <img src="/{{ photo.small }}">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+    </body>
+</html>
