@@ -15,7 +15,12 @@ def generate_name():
 def generate_small_version(image_path):
     im = Image.open(image_path)
     x, y = im.size
-    new_im = im.resize((int(x * 0.1), int(y * 0.1)),Image.ANTIALIAS)
+    new_x, new_y = x, y
+    if x > 600:
+        new_x = 600
+        rate = x / float(new_x)
+        new_y = int(y / rate)
+    new_im = im.resize((new_x, new_y),Image.ANTIALIAS)
     new_path_list = image_path.split('/')
     new_path_list.insert(-1, 'small_version')
     new_path = '/'.join(new_path_list)

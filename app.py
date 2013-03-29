@@ -11,19 +11,19 @@ import json
 app = Flask(__name__)
 app.config['db'] = Redis()
 
-app.config['BASIC_AUTH_USERNAME'] = 'xiayf'
-app.config['BASIC_AUTH_PASSWORD'] = 'abc123'
+app.config.from_pyfile('config.py')
 
 basic_auth = BasicAuth(app)
 
 @app.route('/')
-#@basic_auth.required
+@basic_auth.required
 def index():
     photos = app.config['db'].get_all()
     photos_num = len(photos)
     right = [photos[index] for index in xrange(photos_num) if index % 2 == 1]
     left = [photos[index] for index in xrange(photos_num) if index % 2 == 0]
-    return render_template('index.html', left_photos = left, right_photos = right)
+    return render_template('index.html', site_title = app.config['SITE_TITLE'],
+            left_photos = left, right_photos = right)
 
 @app.route('/upload', methods=['POST'])
 def upload():
