@@ -19,7 +19,7 @@
 
 ## 使用
 
-根据具体情况修改页面模板(templates/index.html)中的title信息；
+根据具体情况修改配置文件config.py中的信息；
 
 可使用Gunicorn驱动应用：
 
