@@ -2,7 +2,7 @@
 #coding: utf-8
 
 # 网站标题
-SITE_TITLE = u'美女欣赏'
+SITE_TITLE = u'毕业光影'
 
 # 基本身份验证
 # 用户名
