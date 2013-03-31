@@ -19,11 +19,11 @@ basic_auth = BasicAuth(app)
 @basic_auth.required
 def index():
     photos = app.config['db'].get_all()
-    photos_num = len(photos)
-    right = [photos[index] for index in xrange(photos_num) if index % 2 == 1]
-    left = [photos[index] for index in xrange(photos_num) if index % 2 == 0]
+    #photos_num = len(photos)
+    #right = [photos[index] for index in xrange(photos_num) if index % 2 == 1]
+    #left = [photos[index] for index in xrange(photos_num) if index % 2 == 0]
     return render_template('index.html', site_title = app.config['SITE_TITLE'],
-            left_photos = left, right_photos = right)
+            photo_urls = json.dumps(photos))
 
 @app.route('/upload', methods=['POST'])
 def upload():

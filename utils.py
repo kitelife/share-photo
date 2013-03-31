@@ -16,8 +16,8 @@ def generate_small_version(image_path):
     im = Image.open(image_path)
     x, y = im.size
     new_x, new_y = x, y
-    if x > 600:
-        new_x = 600
+    if x > 550:
+        new_x = 550
         rate = x / float(new_x)
         new_y = int(y / rate)
     new_im = im.resize((new_x, new_y),Image.ANTIALIAS)

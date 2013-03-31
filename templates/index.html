@@ -15,26 +15,13 @@
             {{ site_title }}
         </h1>
     </div>
+    <div id="photo_urls" hidden="hidden">{{ photo_urls }}</div>
     <div id="container">
     <div id="jquery-wrapped-fine-uploader"></div>
     <div id="show_photos">
         <div id="left-part">
-            {% for photo in left_photos %}
-            <div class="left_photo">
-                <a target="_blank" href="/{{ photo.origin }}">
-                    <img src="/{{ photo.small }}">
-                </a>
-            </div>
-            {% endfor %}
         </div>
         <div id="right-part">
-            {% for photo in right_photos %}
-            <div class="right_photo">
-                <a target="_blank" href="/{{ photo.origin }}">
-                    <img src="/{{ photo.small }}">
-                </a>
-            </div>
-            {% endfor %}
         </div>
     </div>
     </div>
