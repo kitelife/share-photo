@@ -12,6 +12,8 @@ img {
 .left_photo, .right_photo {
     margin-top: 10px;
     text-align: center;
+    margin-bottom: 20px;
+    padding: 5px;
 }
 
 #jquery-wrapped-fine-uploader {
@@ -45,11 +47,23 @@ li {
 
 li a {
     text-decoration: none;
-    padding: 0 6px;
+    padding: 5px 8px;
     color: #000;
+    font-size: 18px;
 }
 
 #delete label {
-    padding: 0 6px;
+    padding: 5px 8px;
     cursor: pointer;
+    font-size: 18px;
+}
+
+ul {
+    padding: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#show_action {
+    margin-bottom: 10px;
 }
