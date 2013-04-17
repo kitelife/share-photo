@@ -34,3 +34,22 @@ img {
     width: 50%;
     float: right;
 }
+
+li {
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    line-height: 24px;
+    background-color: #ccc;
+}
+
+li a {
+    text-decoration: none;
+    padding: 0 6px;
+    color: #000;
+}
+
+#delete label {
+    padding: 0 6px;
+    cursor: pointer;
+}

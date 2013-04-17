@@ -13,6 +13,9 @@ class Redis(object):
     def get(self, key):
         return self.server.get(key)
 
+    def delete(self, key):
+        self.server.delete(key)
+
     def get_all(self):
         images = []
         for image in sorted(self.server.keys(), reverse=True):

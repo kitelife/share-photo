@@ -1,12 +1,14 @@
 #!/usr/bin/env python
+#coding: utf-8
 
 from flask import Flask
 from flask import request, redirect, url_for
-from flask import render_template
+from flask import render_template, send_file
 from flask.ext.basicauth import BasicAuth
 from utils import *
 from db import Redis
 import json
+import os
 
 app = Flask(__name__)
 app.config['db'] = Redis()
@@ -36,7 +38,34 @@ def upload():
         app.config['db'].set(image_path, small_image_path)
     return json.dumps({'success': True})
 
+@app.route('/download', methods=['GET'])
+def download():
+    image_name = request.args.get('imgname', '')
+    target_path = 'static/uploads/' + image_name
+    if image_name and os.path.exists(target_path):
+        image_type = image_name.split('.')[-1]
+        mime_type = 'image/'+image_type
+        return send_file(target_path, mimetype=mime_type, 
+                as_attachment=True, attachment_filename=image_name)
+    else:
+        return "Not found that image"
 
+@app.route('/delete', methods=['POST'])
+def delete():
+    image_name = request.form['imgname']
+    target_path = 'static/uploads/' + image_name
+    if image_name and os.path.exists(target_path):
+        small_target_path = 'static/uploads/small_version/' + image_name
+        try:
+            os.remove(target_path)
+            os.remove(small_target_path)
+            app.config['db'].delete(target_path)
+        except:
+            print u"数据删除错误"
+        return "OK"
+    else:
+        return "ERROR"
+        
 if __name__ == '__main__':
     prepare_before_run()
     app.run(debug=True)

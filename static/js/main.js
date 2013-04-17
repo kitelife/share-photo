@@ -55,4 +55,47 @@ $(function () {
             add_img_from_json();
         } 
     });
+    /*
+    $("img").mousedown(
+        function(e){
+            if (3 == e.which) {
+                alert("鼠标右击");
+            }
+        }
+    );
+    */
+   $(".left_photo, .right_photo").hover(
+    function(){
+       $("img").hover(function() {
+       if ($(this).parent().parent().find("#show_action").length == 0 ){
+           var img_src = $(this).parent().attr("href");
+           var img_src_to_array = img_src.split('/');
+           var img_name = img_src_to_array[img_src_to_array.length-1];
+           var img_ele = '<a href="/download?imgname=' + img_name + '">下载' + '</a>';
+           $(this).parent().parent().append('<ul id="show_action"><li id="download">' + 
+                                            img_ele + '</li>&nbsp;&nbsp;\
+                                            <li id="delete"><label>删除</label></li></ul>');
+       }
+       });
+    },
+    function(){
+        $("#show_action").remove();
+    });
+
+    $(document).on("click", "#download", function(){
+        //var src = $("#show_action").parent().find("a>img").attr("src");
+        //var src_to_array = src.split("/");
+        //var image_name = src_to_array[src_to_array.length-1];
+        //$.get("/download", {imgname: image_name});
+        $("#show_action").remove();
+    });
+
+    $(document).on("click", "#delete", function(){
+        var src = $("#show_action").parent().find("a>img").attr("src");
+        var src_to_array = src.split("/");
+        var image_name = src_to_array[src_to_array.length - 1];
+        $.post("/delete", {imgname: image_name}, function(data){
+            setTimeout("window.location.href='/'", 1000);      
+        });
+    });
 })
