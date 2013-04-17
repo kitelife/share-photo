@@ -24,3 +24,7 @@
 可使用Gunicorn驱动应用：
 
     sudo gunicorn -w 4 -b ip:port app:app
+
+## 更新
+
+2013-04-17： 增加下载、删除功能。
